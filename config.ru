@@ -1,7 +1,6 @@
 require './app'
 
-# config.ru
-use Log
+use Rack::CommonLogger
 use Rack::RPC::Endpoint, Server.new, :path => "/xmlrpc.php"
 
 app = proc do |env|
