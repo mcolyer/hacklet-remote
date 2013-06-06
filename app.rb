@@ -38,7 +38,7 @@ class Server < Rack::RPC::Server
 
     command = "hacklet #{command} -n 0x#{network.to_s(16)} -s #{socket}"
     puts "Executing: '#{command}'"
-    puts `#{command}`
+    begin; puts `#{command}`; rescue; end
 
     return success
   end
