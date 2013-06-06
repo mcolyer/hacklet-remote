@@ -86,6 +86,22 @@ new features)!  If you're looking for something to do check the [issue]
 list and see if there's something already there. If you've got a new
 idea, feel free to create an issue for discussion.
 
+### Getting Started
+
+* Checkout the repository
+* Install dependencies `bundle install`
+* Create a feature branch `git checkout -b short-name`
+* Run tests `bundle exec rake`
+* Write your feature (and tests)
+* Run tests `bundle exec rake`
+* Create a pull request
+
+## Future Work
+
+* Aliasing/grouping so you can refer to sets of outlets by a nice name.
+* HTML5 Mobile interface
+* Sending the usage data somewhere
+
 [IFTTT]: http://ifttt.com
 [Modlets]: http://themodlet.com
 [amazon]: http://www.amazon.com/ThinkEco-TE1010-Modlet-Starter-White/dp/B00AAT43OA/
