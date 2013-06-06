@@ -1,14 +1,22 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    bindata (1.5.0)
     builder (3.2.2)
+    hacklet (0.5.1)
+      bindata (~> 1.5.0)
+      serialport (~> 1.1.0)
+      slop (~> 3.4.0)
     rack (1.5.2)
     rack-rpc (0.0.6)
       builder (>= 2.1.2)
       rack (>= 1.0)
+    serialport (1.1.0)
+    slop (3.4.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  hacklet
   rack-rpc
