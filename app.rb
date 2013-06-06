@@ -29,10 +29,6 @@ class Server < Rack::RPC::Server
     body = content['description']
     attributes = {}
 
-    puts "u: #{user.inspect}, p: #{password.inspect}"
-    puts command.inspect
-    puts body.inspect
-
     return unauthorized unless valid_user_and_password?(user, password)
     return bad_request unless ['on', 'off'].include? command
 
