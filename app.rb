@@ -1,5 +1,7 @@
 require 'builder'
 require 'rack/rpc'
+require 'yaml'
+require 'json'
 
 class Server < Rack::RPC::Server
   def supported_methods(arg1)
@@ -14,14 +16,60 @@ class Server < Rack::RPC::Server
   end
   rpc 'metaWeblog.getRecentPosts' => :recent_posts
 
+  # Public: Executes the proper hacklet command based on the request.
+  #
+  # user - The name of the user for authentication purposes
+  # password - The password for authentication purposes
+  # content['title'] - 'on' or 'off' depending on which action is desired.
+  # content['description'] - The json payload for options.
+  #
+  # Returns '<string>200</string>' on success.
   def new_post(blog_id, user, password, content, publish)
-    # Webhook
-    puts content['title']
-    puts content['description']
-    puts content['categories']
-    puts content['mt_keywords'][0]
-    puts content['post_status']
-    '<string>200</string>'
+    command = content['title']
+    body = content['description']
+    attributes = {}
+
+    puts "u: #{user.inspect}, p: #{password.inspect}"
+    puts command.inspect
+    puts body.inspect
+
+    return unauthorized unless valid_user_and_password?(user, password)
+    return bad_request unless ['on', 'off'].include? command
+
+    begin; attributes = JSON.parse(body); rescue JSON::ParserError; end
+    return bad_request unless socket = attributes['socket'].to_i
+    return bad_request unless network = attributes['network'].to_i(16)
+
+    command = "hacklet #{command} -n 0x#{network.to_s(16)} -s #{socket}"
+    puts "Executing: '#{command}'"
+    puts `#{command}`
+
+    return success
   end
   rpc 'metaWeblog.newPost' => :new_post
+
+protected
+  def valid_user_and_password?(user, password)
+    raise "Default password used, update config.yml" if configuration['password'] == 'default'
+    configuration['user'] == user && configuration['password'] == password
+  end
+
+  def configuration
+    return @configuration if @configuration
+
+    configuration_path = File.join(File.dirname(__FILE__), 'config.yml')
+    @configuration = YAML.load_file(configuration_path)
+  end
+
+  def unauthorized
+    '<string>403</string>'
+  end
+
+  def bad_request
+    '<string>400</string>'
+  end
+
+  def success
+    '<string>400</string>'
+  end
 end
