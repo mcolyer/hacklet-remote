@@ -58,14 +58,14 @@ protected
   end
 
   def unauthorized
-    '<string>403</string>'
+    403
   end
 
   def bad_request
-    '<string>400</string>'
+    400
   end
 
   def success
-    '<string>400</string>'
+    200
   end
 end
