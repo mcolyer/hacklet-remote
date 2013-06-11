@@ -6,22 +6,16 @@ Do you want to?
 * Turn your AC off by sending an SMS?
 * Schedule your watering system using Google Calendar?
 
-Now you can by using Hacklet Remote, a server which connects your
-[Modlets] to [IFTTT]. Which means you can leverage the full power of
-IFTTT and create any recipe that it supports.
+Now you can using hacklet-remote, a server which connects your [Modlets]
+to [IFTTT]. Which means you can leverage the full power of IFTTT and
+create any recipe that it supports.
 
-If you haven't heard of the Modlet before, it's a smart outlet cover
-which allows you to convert any outlet in your house into a smart
-outlet. This means that you can control whether a plug is on or off and
-you can also determine how much energy it's using.
-
-There are alot of other similar products but this is the first one that
-I've seen that [costs $50][amazon] and includes control as well as
-monitoring of the both sockets independently.
+hacklet-remote uses the [hacklet] library to communicate with the
+Modlet.
 
 ## Getting Started
 
-You'll need a modlet starter pack and a computer running Linux to get started.
+You'll need a Modlet starter pack and a computer running Linux to get started.
 
 ```shell
 # Checkout a copy of the server
@@ -39,7 +33,7 @@ sudo modprobe ftdi_sio vendor=0x0403 product=0x8c81
 hacklet commission
 
 # Now plug your modlet into the wall. Don't worry if you've already done
-# this just press and hold the button at the top until you see the #
+# this just press and hold the button at the top until you see the
 # spinning red indicator.
 
 # After several seconds you should see a log message indicating the
@@ -72,37 +66,39 @@ rake run
 ## Configuring your IFTTT Trigger
 
 Since IFTTT doesn't provide a webhook, it necessary for us to use their
-wordpress channel to send custom information.
+Wordpress channel to send custom information.
 
 * Title: The command you'd like to issue either 'on' or 'off'. All other
   values will be ignored.
-* Description: The JSON of specifying the network id and socket id of
-  the modlet you'd like to control. Ex `{"network":"0xab12","socket":0}`
+* Description: The JSON of specifying the network id (printed out during
+  commissioning) and socket id (0 - top, 1 - bottom) of the Modlet you'd like to
+  control. Ex `{"network":"0xab12","socket":0}`
 
 ## Contributing
 
 All contributions are welcome (bug reports, bug fixes, documentation or
-new features)!  If you're looking for something to do check the [issue]
-list and see if there's something already there. If you've got a new
-idea, feel free to create an issue for discussion.
+new features)! All discussion happens using [issues] so if you are
+interested in contributing:
 
-### Getting Started
+* Search to make sure an issue doesn't already exist.
+* If it doesn't, create a new issue and describe your proposal.
 
-* Checkout the repository
+If you're interested in following the status of the project, simply
+"watch" the repository on Github and you'll receive notices about all of
+the new issues.
+
+### Contribution Workflow
+
+* Fork the repository
 * Install dependencies `bundle install`
-* Create a feature branch `git checkout -b short-name`
+* Create a feature branch `git checkout -b short-descriptive-name`
 * Run tests `bundle exec rake`
 * Write your feature (and tests)
 * Run tests `bundle exec rake`
 * Create a pull request
 
-## Future Work
-
-* Aliasing/grouping so you can refer to sets of outlets by a nice name.
-* HTML5 Mobile interface
-* Sending the usage data somewhere
-
 [IFTTT]: http://ifttt.com
 [Modlets]: http://themodlet.com
 [amazon]: http://www.amazon.com/ThinkEco-TE1010-Modlet-Starter-White/dp/B00AAT43OA/
 [issue]: https://github.com/mcolyer/hacklet-remote/issues
+[hacklet]: http://github.com/mcolyer/hacklet/
