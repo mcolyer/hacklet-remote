@@ -1,4 +1,4 @@
-# Hacklet Remote
+# Hacklet Remote [![Build Status](https://travis-ci.org/mcolyer/hacklet-remote.png)](https://travis-ci.org/mcolyer/hacklet-remote)
 
 Do you want to?
 
