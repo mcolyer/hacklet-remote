@@ -18,6 +18,15 @@ Modlet.
 You'll need a Modlet starter pack and a computer running Linux to get started.
 
 ```shell
+# On Ubuntu/Debian based Linux
+sudo apt-get install libftdi1
+echo 'ATTRS{idVendor}=="0403", ATTRS{idProduct}=="8c81", SUBSYSTEMS=="usb", ACTION=="add", MODE="0660", GROUP="plugdev"' | sudo tee /etc/udev/rules.d/99-thinkeco.rules
+
+# On OSX
+brew install libftdi
+
+# For Windows see https://github.com/mcolyer/hacklet#windows
+
 # Checkout a copy of the server
 git clone http://github.com/mcolyer/hacklet-remote.git
 
@@ -25,9 +34,6 @@ git clone http://github.com/mcolyer/hacklet-remote.git
 cd hacklet-remote; bundle
 
 # Plug in the modlet dongle to your computer
-
-# Connect the kernel driver
-sudo modprobe ftdi_sio vendor=0x0403 product=0x8c81
 
 # Setup your modlet network
 hacklet commission
