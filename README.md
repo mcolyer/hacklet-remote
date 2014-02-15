@@ -74,11 +74,9 @@ rake run
 Since IFTTT doesn't provide a webhook, it necessary for us to use their
 Wordpress channel to send custom information.
 
-* Title: The command you'd like to issue either 'on' or 'off'. All other
-  values will be ignored.
-* Description: The JSON array specifying the network id (printed out during
-  commissioning) and socket id (0 - top, 1 - bottom) pairs you'd like to
-  control. Ex `[{"network":"0xab12","socket":0}]`
+* Description: The JSON array specifying the device, command, network id
+  (printed out during commissioning) and socket id (0 - top, 1 - bottom)
+  pairs you'd like to control. Ex `[{"device": "socket", "command": "on", "network":"0xab12","socket":0}]`
 
 ## Contributing
 
