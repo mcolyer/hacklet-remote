@@ -6,7 +6,6 @@ module Plugins
 
     def execute
       command = @arguments['command']
-      puts @arguments.inspect
       return false unless ['on', 'off'].include? command
       return false unless socket = @arguments['socket'].to_i
       return false unless network = @arguments['network'].to_i(16)
