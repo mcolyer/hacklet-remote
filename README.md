@@ -76,9 +76,9 @@ Wordpress channel to send custom information.
 
 * Title: The command you'd like to issue either 'on' or 'off'. All other
   values will be ignored.
-* Description: The JSON of specifying the network id (printed out during
-  commissioning) and socket id (0 - top, 1 - bottom) of the Modlet you'd like to
-  control. Ex `{"network":"0xab12","socket":0}`
+* Description: The JSON array specifying the network id (printed out during
+  commissioning) and socket id (0 - top, 1 - bottom) pairs you'd like to
+  control. Ex `[{"network":"0xab12","socket":0}]`
 
 ## Contributing
 

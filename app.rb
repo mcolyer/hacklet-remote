@@ -40,12 +40,14 @@ class Server < Rack::RPC::Server
     return bad_request unless ['on', 'off'].include? command
 
     begin; attributes = JSON.parse(body); rescue JSON::ParserError; end
-    return bad_request unless socket = attributes['socket'].to_i
-    return bad_request unless network = attributes['network'].to_i(16)
+    attributes.each do |set|
+      return bad_request unless socket = set['socket'].to_i
+      return bad_request unless network = set['network'].to_i(16)
 
-    command = "hacklet #{command} -n 0x#{network.to_s(16)} -s #{socket}"
-    puts "Executing: '#{command}'"
-    begin; puts `#{command}`; rescue; end
+      command = "hacklet #{command} -n 0x#{network.to_s(16)} -s #{socket}"
+      puts "Executing: '#{command}'"
+      begin; puts `#{command}`; rescue; end
+    end
 
     return success
   end

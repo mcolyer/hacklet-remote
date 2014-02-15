@@ -19,7 +19,7 @@ describe Server do
           <param><value> <string>#{password}</string> </value></param>
           <param><value> <struct>
             <member> <name>title</name> <value> <string>#{command}</string> </value></member>
-            <member> <name>description</name> <value> <string>{"network": "0xc6d2", "socket":0}</string> </value></member>
+            <member> <name>description</name> <value> <string>[{"network": "0xc6d2", "socket":0}]</string> </value></member>
             <member> <name>post_status</name> <value> <string>publish</string> </value></member>
           </struct> </value> </param>
           <param> <value> <boolean>1</boolean> </value> </param>
