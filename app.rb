@@ -3,6 +3,10 @@ require 'rack/rpc'
 require 'yaml'
 require 'json'
 
+Dir.glob(File.dirname(__FILE__) + '/plugins/*.rb') do |f|
+  require f
+end
+
 class Server < Rack::RPC::Server
   # Public: Necessary for authentication purposes.
   #
@@ -32,21 +36,22 @@ class Server < Rack::RPC::Server
   #
   # Returns '<string>200</string>' on success.
   def new_post(blog_id, user, password, content, publish)
-    command = content['title']
     body = content['description']
-    attributes = {}
+    attributes = []
 
     return unauthorized unless valid_user_and_password?(user, password)
-    return bad_request unless ['on', 'off'].include? command
-
     begin; attributes = JSON.parse(body); rescue JSON::ParserError; end
-    attributes.each do |set|
-      return bad_request unless socket = set['socket'].to_i
-      return bad_request unless network = set['network'].to_i(16)
 
-      command = "hacklet #{command} -n 0x#{network.to_s(16)} -s #{socket}"
-      puts "Executing: '#{command}'"
-      begin; puts `#{command}`; rescue; end
+    attributes.each do |arguments|
+      plugin_name = Plugins.constants.find do |c|
+        klass = Plugins.const_get(c)
+        name = "Plugins::#{arguments['device'].capitalize}"
+        Class === klass && klass.name == name
+      end
+      return bad_request unless plugin_name
+
+      instance = Plugins.const_get(plugin_name).new(arguments)
+      return bad_request unless instance.execute
     end
 
     return success

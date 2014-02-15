@@ -18,8 +18,8 @@ describe Server do
           <param><value> <string>#{user}</string> </value></param>
           <param><value> <string>#{password}</string> </value></param>
           <param><value> <struct>
-            <member> <name>title</name> <value> <string>#{command}</string> </value></member>
-            <member> <name>description</name> <value> <string>[{"network": "0xc6d2", "socket":0}]</string> </value></member>
+            <member> <name>title</name> <value> <string></string> </value></member>
+            <member> <name>description</name> <value> <string>[{"device":"socket", "command": "#{command}", "network": "0xc6d2", "socket":0}]</string> </value></member>
             <member> <name>post_status</name> <value> <string>publish</string> </value></member>
           </struct> </value> </param>
           <param> <value> <boolean>1</boolean> </value> </param>
@@ -90,7 +90,7 @@ describe Server do
         let(:body) { build_request('user', 'password', 'on') }
 
         before do
-          subject.should_receive(:`).with('hacklet on -n 0xc6d2 -s 0').and_return('None')
+          Plugins::Socket.any_instance.should_receive(:`).with('hacklet on -n 0xc6d2 -s 0').and_return('None')
           xmlrpc_request(body)
         end
 
@@ -103,7 +103,7 @@ describe Server do
         let(:body) { build_request('user', 'password', 'off') }
 
         before do
-          subject.should_receive(:`).with('hacklet off -n 0xc6d2 -s 0').and_return('None')
+          Plugins::Socket.any_instance.should_receive(:`).with('hacklet off -n 0xc6d2 -s 0').and_return('None')
           xmlrpc_request(body)
         end
 
