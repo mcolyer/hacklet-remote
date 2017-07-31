@@ -46,7 +46,7 @@ hacklet commission
 # device id and network id, keep a copy of the network id it should look
 # similar to this 0xab12
 
-# Edit config.yml and create a unique username and password.
+# Edit config.yml and create a unique key.
 
 # Run the server
 rake run
@@ -61,22 +61,23 @@ rake run
 
 # Create an account of ifttt.com
 
-# Configure the 'Wordpress' channel
+# Configure the 'Maker' channel
 
-# Enter your public IP address as the host and the user and password you
-# configured in config.yml
+# Enter your public IP address as the host and the key you configured in
+# config.yml, ie (http://<my-ip>:9292/?key=secret)
 
-# Congratulations you should now be ready to configure your first channel.
+# Set Method to POST
+
+# Set Content Type to "application/json"
+
+# Set the body to a JSON array specifying the device, command, network id
+# (printed out during commissioning) and socket id (0 - top, 1 - bottom)
+#  pairs you'd like to control. Ex `[{"device": "socket", "command": "on", "network":"0xab12","socket":0}]`
+
+# You'll need to repeat this process for each socket and action you want
+# to control. So if you want to turn a single socket on and off you'll
+# need to create two webhooks.
 ```
-
-## Configuring your IFTTT Trigger
-
-Since IFTTT doesn't provide a webhook, it necessary for us to use their
-Wordpress channel to send custom information.
-
-* Description: The JSON array specifying the device, command, network id
-  (printed out during commissioning) and socket id (0 - top, 1 - bottom)
-  pairs you'd like to control. Ex `[{"device": "socket", "command": "on", "network":"0xab12","socket":0}]`
 
 ## Contributing
 
