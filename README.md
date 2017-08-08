@@ -15,7 +15,8 @@ Modlet.
 
 ## Getting Started
 
-You'll need a Modlet starter pack and a computer running Linux to get started.
+You'll need a Modlet starter pack and a computer running Linux with Ruby
+2.2.2 or higher installed to get started.
 
 ```shell
 # On Ubuntu/Debian based Linux
