@@ -1,10 +1,10 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'rack-rpc'
-gem 'hacklet'
+gem "sinatra"
+gem "hacklet"
 
 group :development do
-  gem 'rake'
-  gem 'rspec'
-  gem 'rack-test'
+  gem "rake"
+  gem "rspec"
+  gem "rack-test"
 end
