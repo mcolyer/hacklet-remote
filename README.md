@@ -80,6 +80,13 @@ rake run
 # need to create two webhooks.
 ```
 
+### Keeping it running
+
+Once you've got things working successfully, you'll probably want to keep it
+running. Check out the [foreman gem](https://github.com/ddollar/foreman) and
+more specifically the `foreman export` command to generate the appropriate
+files for your system.
+
 ## Contributing
 
 All contributions are welcome (bug reports, bug fixes, documentation or
