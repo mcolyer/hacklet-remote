@@ -3,7 +3,7 @@ GEM
   specs:
     bindata (1.5.1)
     diff-lcs (1.3)
-    ffi (1.9.18)
+    ffi (1.9.24)
     hacklet (0.6.0)
       bindata (~> 1.5.0)
       libftdi-ruby (~> 0.0.20)
@@ -42,6 +42,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ffi (= 1.9.24)
   hacklet
   rack-test
   rake
