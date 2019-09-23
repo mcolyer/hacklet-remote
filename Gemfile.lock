@@ -12,7 +12,7 @@ GEM
       ffi (~> 1.0)
     mustermann (1.0.3)
     rack (2.0.7)
-    rack-protection (2.0.1)
+    rack-protection (2.0.2)
       rack
     rack-test (0.7.0)
       rack (>= 1.0, < 3)
@@ -30,10 +30,10 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
-    sinatra (2.0.1)
+    sinatra (2.0.2)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.1)
+      rack-protection (= 2.0.2)
       tilt (~> 2.0)
     slop (3.4.7)
     tilt (2.0.9)
@@ -46,7 +46,7 @@ DEPENDENCIES
   rack-test
   rake
   rspec
-  sinatra (= 2.0.1)
+  sinatra (= 2.0.2)
 
 BUNDLED WITH
    1.15.3

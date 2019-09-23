@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "sinatra", "2.0.1"
+gem "sinatra", "2.0.2"
 gem "hacklet"
 
 group :development do
