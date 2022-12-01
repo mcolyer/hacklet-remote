@@ -10,10 +10,10 @@ GEM
       slop (~> 3.4.0)
     libftdi-ruby (0.0.20)
       ffi (~> 1.0)
-    mustermann (1.1.1)
+    mustermann (2.0.2)
       ruby2_keywords (~> 0.0.1)
-    rack (2.2.3.1)
-    rack-protection (2.2.0)
+    rack (2.2.4)
+    rack-protection (2.2.3)
       rack
     rack-test (0.7.0)
       rack (>= 1.0, < 3)
@@ -32,13 +32,13 @@ GEM
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
     ruby2_keywords (0.0.5)
-    sinatra (2.2.0)
-      mustermann (~> 1.0)
+    sinatra (2.2.3)
+      mustermann (~> 2.0)
       rack (~> 2.2)
-      rack-protection (= 2.2.0)
+      rack-protection (= 2.2.3)
       tilt (~> 2.0)
     slop (3.4.7)
-    tilt (2.0.10)
+    tilt (2.0.11)
 
 PLATFORMS
   ruby
@@ -49,7 +49,7 @@ DEPENDENCIES
   rack-test
   rake
   rspec
-  sinatra (= 2.2.0)
+  sinatra (= 2.2.3)
 
 BUNDLED WITH
    1.15.3
